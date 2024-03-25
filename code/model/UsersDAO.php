@@ -105,11 +105,11 @@ class User {
         $result = $stmt->execute();
         
         // Récupération des informations de l'utilisateur
-        $user = $result->fetchArray(SQLITE3_ASSOC);
+        $user = $result->fetchArray(SQLITE3_ASSOC);$
+        return $user
     }
 
     public function selectUserByLogin($login){
-        // Supposons que $pdo est votre objet PDO connecté à la base de données
         $stmt = $this->connection->prepare("SELECT * FROM User WHERE Login = :Login");
         $stmt->bindValue(':Login', $login, SQLITE3_INTEGER);
         
@@ -118,6 +118,7 @@ class User {
         
         // Récupération des informations de l'utilisateur
         $user = $result->fetchArray(SQLITE3_ASSOC);
+        return $user
     }
 
     public function updateUser() {
