@@ -31,26 +31,24 @@ function register() {
     $verifPassword = $_POST['verifPassword'];
 
     if ($passwordSignup != $verifPassword) {
-        $error = 0;
+        $SESSION['error'] = 0;
     }
     else if (!checkPassword($passwordSignup)) {
-        $error = 1;
+        $SESSION['error'] = 1;
         
     }
     else {
         $user = new User(null, $prenom, $nom, $usernameSignup, $passwordSignup);
         
         if ($user->addUser()) {
-            $error = 2;
-
+            $SESSION['username'] = $usernameSignup;
         }
         else {
-            $SESSION['username'] = $usernameSignup;
-            header('Location: ../public/index.php');
+            $SESSION['error'] = 2;
         }
     }
 }
 
 register();
-
+header('Location: ../public/index.php');
 ?>
