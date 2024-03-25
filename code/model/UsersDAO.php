@@ -79,7 +79,7 @@ class User {
             $stmt->bindParam(1, $this->firstName);
             $stmt->bindParam(2, $this->lastName);
             $stmt->bindParam(3, $this->login);
-            $stmt->bindParam(4, password_hash($this->password, PASSWORD_DEFAULT));
+            $stmt->bindParam(4, password_hash($this->password, PASSWORD_BCRYPT));
             // Exécution de la requête avec des données
             $res = $stmt->execute();
         
