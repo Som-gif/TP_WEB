@@ -25,15 +25,19 @@
                     <h3> <a href="../views/contact.php"> Contact Us </a> </h3>
                     
                 </article>
-                <article onclick="showLogin()">
-                    <h3  >Connect</h3>
-                </article>
-                <article onclick="showSignUp()">
-                    <h3  >SignUp</h3>
-                </article>
                 <article>
                     <h3> <a href="../views/quiz.php">Quizz</a></h3>
                 </article>
+
+                <div>
+                    
+                    <article onclick="showLogin()">
+                        <h3>Connect</h3>
+                    </article>
+                    <article onclick="showSignUp()">
+                        <h3 >SignUp</h3>
+                    </article>
+                </div>
             </nav>
         </header>
         <nav id="topNav">
