@@ -1,6 +1,9 @@
 
 <!DOCTYPE html>
 <!-- Hugo Le Noë TD 3 firefox -->
+<?php
+    session_start();
+?>  
 <html>
     <head>
         <title>Page de présentation</title>
@@ -275,8 +278,7 @@
     </script>
     </body>
     <script>
-        var error = <?php echo $_SESSION['error']; ?>;
-
+        var error = <?php echo $_SESSION['error']; if (isset($_SESSION['error'])) { unset($_SESSION['error']); } else { echo -1; } ?>;
         if (error == 0) {
             alert("Les mots de passes ne sont pas identiques");
         }

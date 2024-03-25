@@ -15,7 +15,6 @@ function checkPassword($password) {
         return false;
     }
     return true;
-
 }
 
 function register() {

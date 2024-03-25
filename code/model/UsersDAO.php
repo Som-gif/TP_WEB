@@ -8,7 +8,7 @@ class User {
     private $password;
     private $registrationDate;
 
-    public function __construct() {}
+
     public function __construct($userid, $firstName, $lastName, $login, $password) {
         $this->userID = $userid;
         $this->firstName = $firstName;
@@ -105,8 +105,8 @@ class User {
         $result = $stmt->execute();
         
         // Récupération des informations de l'utilisateur
-        $user = $result->fetchArray(SQLITE3_ASSOC);$
-        return $user
+        $user = $result->fetchArray(SQLITE3_ASSOC);
+        return $user;
     }
 
     public function selectUserByLogin($login){
@@ -118,7 +118,7 @@ class User {
         
         // Récupération des informations de l'utilisateur
         $user = $result->fetchArray(SQLITE3_ASSOC);
-        return $user
+        return $user;
     }
 
     public function updateUser() {
