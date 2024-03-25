@@ -3,8 +3,8 @@
 <html>
     <head>
         <title>Page de présentation</title>
-        <link rel="stylesheet" href="./style.css">
-        <script src="./script.js" ></script>
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="./js/script.js" ></script>
     </head>
     <body>
         <header>
@@ -21,7 +21,7 @@
                     
                 </article>
                 <article>
-                    <h3> <a href="./contact.html"> Contact Us </a> </h3>
+                    <h3> <a href="../views/contact.php"> Contact Us </a> </h3>
                     
                 </article>
                 <article onclick="showLogin()">
@@ -31,7 +31,7 @@
                     <h3  >SignUp</h3>
                 </article>
                 <article>
-                    <h3> <a href="./quiz.html">Quizz</a></h3>
+                    <h3> <a href="../views/quiz.php">Quizz</a></h3>
                 </article>
             </nav>
         </header>
@@ -84,7 +84,7 @@
                 </article>
                 <article>
                     <div class="cyber">
-                        <img src="./assets/firewall.jpeg" alt="" width="70px">
+                        <img src="./img/firewall.jpeg" alt="" width="70px">
                         <h5 >
                             Cybersécurité
                         </h5>
@@ -95,7 +95,7 @@
                 </article>
                 <article>
                     <div class="ia">
-                        <img src="./assets/robot.jpeg" alt="" width="70px">
+                        <img src="./img/robot.jpeg" alt="" width="70px">
                         <h5 >
                             IA
                         </h5>
@@ -142,14 +142,14 @@
                         <div>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
                             <div class="userAvis">
-                                <img src="./assets//mario.jpeg" alt="" width="60px">
+                                <img src="./img//mario.jpeg" alt="" width="60px">
                                 Mario
                             </div>
                         </div>
                         <div>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
                             <div class="userAvis">
-                                <img src="./assets/images.png" alt="" width="60px">
+                                <img src="./img/images.png" alt="" width="60px">
                                 Elizabeth
                             </div>
                         </div>

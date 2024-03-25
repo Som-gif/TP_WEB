@@ -52,7 +52,7 @@ header nav article:hover{
 
 
 #topNav{
-    background-image:linear-gradient(rgba(190, 181, 181, 0.15), rgba(190, 181, 181, 0.15)), url('./assets/background.jpg');
+    background-image:linear-gradient(rgba(190, 181, 181, 0.15), rgba(190, 181, 181, 0.15)), url('../img/background.jpg');
     background-size: cover;
     background-position: center bottom;
     display: flex;
