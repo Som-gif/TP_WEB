@@ -32,14 +32,14 @@
                     <h3> <a href="../views/quiz.php">Quizz</a></h3>
                 </article>
 
-                <div>
+                <div style="display: flex; flex-direction: row;">
                     <?php if (isset($_SESSION['username'])) { ?>
-                        <h3> Bienvenue <?php echo $_SESSION['username']; 
-                    ?> </h3>
+                        <article><h3> Bienvenue <?php echo $_SESSION['username']; 
+                    ?> </h3></article>
+                    <article><h3> <a href="../controller/logoutController.php">Déconnexion</a></h3></article>
                     <?php } 
                     else {
                     ?>
-
                     <article onclick="showLogin()">
                         <h3>Connect</h3>
                     </article>
