@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once '../model/DB.php';
 require_once '../model/UsersDAO.php';
@@ -11,11 +11,10 @@ function checkPassword($password) {
     $symbol = preg_match('@[^\w]@', $password);
     
     if(!$uppercase || !$lowercase || !$number || strlen($password) < 8 || !$symbol) {
-        echo "Mot de passe non conforme";
+        $_SESSION['error'] = 1; 
         return false;
     }
     return true;
-
 }
 
 function register() {
@@ -31,20 +30,19 @@ function register() {
     $verifPassword = $_POST['verifPassword'];
 
     if ($passwordSignup != $verifPassword) {
-        $SESSION['error'] = 0;
+        $_SESSION['error'] = 0; 
     }
     else if (!checkPassword($passwordSignup)) {
-        $SESSION['error'] = 1;
-        
+        return;
     }
     else {
         $user = new User(null, $prenom, $nom, $usernameSignup, $passwordSignup);
         
         if ($user->addUser()) {
-            $SESSION['username'] = $usernameSignup;
+            $_SESSION['username'] = $usernameSignup; 
         }
         else {
-            $SESSION['error'] = 2;
+            $_SESSION['error'] = 2; 
         }
     }
 }

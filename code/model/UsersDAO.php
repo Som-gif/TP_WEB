@@ -8,7 +8,6 @@ class User {
     private $password;
     private $registrationDate;
 
-    public function __construct() {}
     public function __construct($userid, $firstName, $lastName, $login, $password) {
         $this->userID = $userid;
         $this->firstName = $firstName;
@@ -79,10 +78,9 @@ class User {
             $stmt->bindParam(1, $this->firstName);
             $stmt->bindParam(2, $this->lastName);
             $stmt->bindParam(3, $this->login);
-            $stmt->bindParam(4, password_hash($this->password, PASSWORD_DEFAULT));
+            $stmt->bindParam(4, password_hash($this->password, PASSWORD_BCRYPT));
             // Exécution de la requête avec des données
             $res = $stmt->execute();
-        
             // Vérification si l'insertion a réussi
             if ($res) {
                 return true;
@@ -97,16 +95,14 @@ class User {
     }
     
     public function selectUser($userID){
-        // Supposons que $pdo est votre objet PDO connecté à la base de données
         $stmt = $this->connection->prepare("SELECT * FROM User WHERE userID = :userID");
         $stmt->bindValue(':userID', $userID, SQLITE3_INTEGER);
         
         // Exécution de la requête
         $result = $stmt->execute();
         
-        // Récupération des informations de l'utilisateur
-        $user = $result->fetchArray(SQLITE3_ASSOC);$
-        return $user
+        $user = $result->fetchArray(SQLITE3_ASSOC);
+        return $user;
     }
 
     public function selectUserByLogin($login){
@@ -116,9 +112,8 @@ class User {
         // Exécution de la requête
         $result = $stmt->execute();
         
-        // Récupération des informations de l'utilisateur
         $user = $result->fetchArray(SQLITE3_ASSOC);
-        return $user
+        return $user;
     }
 
     public function updateUser() {
@@ -128,8 +123,7 @@ class User {
         $stmt->bindValue(':firstName', $this->firstName, SQLITE3_TEXT);
         $stmt->bindValue(':lastName', $this->lastName, SQLITE3_TEXT);
         $stmt->bindValue(':login', $this->login, SQLITE3_TEXT);
-        // Utilisation de password_hash pour hacher le mot de passe avant de l'insérer
-        $stmt->bindValue(':password', $this->password, SQLITE3_TEXT);
+        $stmt->bindValue(':password', password_hash($this->password, PASSWORD_BCRYPT), SQLITE3_TEXT);
         
         // Exécution de la requête
         $stmt->execute();
