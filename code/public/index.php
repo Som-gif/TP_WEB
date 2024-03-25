@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!-- Hugo Le Noë TD 3 firefox -->
 <html>
@@ -233,7 +234,7 @@
         <div id="creationCompte">
             <section >
                 <h3 >Sign up</h3>
-                <form action="">
+                <form method="POST" action="../controller/registerController.php">
                     <label for="name">Nom :</label> <br>
                     <input type="text" id="nom" name="nom" placeholder="Insert Name here ..." /> <br>
 
