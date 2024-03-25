@@ -118,12 +118,17 @@ class User {
         $connection = $db->getConnection();
         try{
             $stmt = $connection->prepare("SELECT * FROM User WHERE Login = :Login");
-            $stmt->bindValue(':Login', $login, SQLITE3_INTEGER);
+            $stmt->bindValue(':Login', $login, SQLITE3_TEXT);
             
             // Exécution de la requête
             $result = $stmt->execute();
             
             $user = $result->fetchArray(SQLITE3_ASSOC);
+            error_log("rrzrzzrrzzr");
+            error_log(print_r($user, true));
+            return $user;
+
+
             return $user;
         } catch (PDOException $e) {
             // Gestion des erreurs
