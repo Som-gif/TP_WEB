@@ -8,6 +8,7 @@ class User {
     private $password;
     private $registrationDate;
 
+    public function __construct() {}
     public function __construct($userid, $firstName, $lastName, $login, $password) {
         $this->userID = $userid;
         $this->firstName = $firstName;
@@ -15,6 +16,14 @@ class User {
         $this->login = $login;
         $this->password = $password;
         
+    }
+
+    public function setUser($userid, $firstName, $lastName, $login, $password) {
+        $this->userID = $userid;
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->login = $login;
+        $this->password = $password;
     }
 
     public function getUserID() {
@@ -86,6 +95,44 @@ class User {
         }
     }
     
+    public function selectUser($userID){
+        // Supposons que $pdo est votre objet PDO connecté à la base de données
+        $stmt = $this->connection->prepare("SELECT * FROM User WHERE userID = :userID");
+        $stmt->bindValue(':userID', $userID, SQLITE3_INTEGER);
+        
+        // Exécution de la requête
+        $result = $stmt->execute();
+        
+        // Récupération des informations de l'utilisateur
+        $user = $result->fetchArray(SQLITE3_ASSOC);
+    }
+
+    public function selectUserByLogin($login){
+        // Supposons que $pdo est votre objet PDO connecté à la base de données
+        $stmt = $this->connection->prepare("SELECT * FROM User WHERE Login = :Login");
+        $stmt->bindValue(':Login', $Login, SQLITE3_INTEGER);
+        
+        // Exécution de la requête
+        $result = $stmt->execute();
+        
+        // Récupération des informations de l'utilisateur
+        $user = $result->fetchArray(SQLITE3_ASSOC);
+    }
+
+    public function updateUser() {
+        // Préparation de la requête SQL pour mettre à jour un utilisateur
+        $stmt = $this->connection->prepare("UPDATE users SET firstName = :firstName, lastName = :lastName, login = :login, password = :password WHERE userID = :userID");
+        $stmt->bindValue(':userID', $this->userID, SQLITE3_INTEGER);
+        $stmt->bindValue(':firstName', $this->firstName, SQLITE3_TEXT);
+        $stmt->bindValue(':lastName', $this->lastName, SQLITE3_TEXT);
+        $stmt->bindValue(':login', $this->login, SQLITE3_TEXT);
+        // Utilisation de password_hash pour hacher le mot de passe avant de l'insérer
+        $stmt->bindValue(':password', $this->password, SQLITE3_TEXT);
+        
+        // Exécution de la requête
+        $stmt->execute();
+    }
+
 }
 
 ?>
