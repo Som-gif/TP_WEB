@@ -3,8 +3,8 @@
 <html>
     <head>
         <title>Page de présentation</title>
-        <link rel="stylesheet" href="./style.css">
-        <script src="./script.js" ></script>
+        <link rel="stylesheet" href="../public/css/style.css">
+        <script src="../public/js/script.js" ></script>
     </head>
     <body>
         <header>
@@ -13,7 +13,7 @@
             </article>  
             <nav>   
                 <article>
-                    <h3> <a href="./index.html"> Home </a></h3>
+                    <h3> <a href="../public/index.php"> Home </a></h3>
                     
                 </article>       
                 <article>
@@ -21,7 +21,7 @@
                     
                 </article>
                 <article>
-                    <h3>Contact Us </h3>
+                    <a href="./contact.php"><h3>Contact Us </h3></a>
                     
                 </article>
                 <article onclick="showLogin()">
@@ -31,7 +31,7 @@
                     <h3  >SignUp</h3>
                 </article>
                 <article>
-                    <h3> <a href="./quiz.html"></a> Quizz</h3>
+                    <a href="./quiz.php"><h3> Quiz</h3></a>
                 </article>
             </nav>
         </header>
