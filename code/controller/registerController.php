@@ -1,7 +1,7 @@
 <?php 
 
 require_once '../model/DB.php';
-require_once '../model/UserDAO.php';
+require_once '../model/UsersDAO.php';
 session_start();
 
 function checkPassword($password) {
@@ -11,6 +11,7 @@ function checkPassword($password) {
     $symbol = preg_match('@[^\w]@', $password);
     
     if(!$uppercase || !$lowercase || !$number || strlen($password) < 8 || !$symbol) {
+        echo "Mot de passe non conforme";
         return false;
     }
     return true;
@@ -27,22 +28,29 @@ function register() {
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $passwordSignup = $_POST['passwordSignup'];
-    $verifPassword = _POST['verifPassword'];
+    $verifPassword = $_POST['verifPassword'];
 
     if ($passwordSignup != $verifPassword) {
         $error = 0;
     }
     else if (!checkPassword($passwordSignup)) {
         $error = 1;
+        
     }
     else {
-        $user = new User($prenom, $nom, $usernameSignup, $passwordSignup);
-        $user->addUser($user);
-        setcookie('username', $usernameSignup, time() + 365*24*3600, null, null, false, true);
+        $user = new User(null, $prenom, $nom, $usernameSignup, $passwordSignup);
+        
+        if ($user->addUser()) {
+            $error = 2;
+
+        }
+        else {
+            $SESSION['username'] = $usernameSignup;
+            header('Location: ../public/index.php');
+        }
     }
 }
 
 register();
-header('Location: ../public/index.php');
 
 ?>

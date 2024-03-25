@@ -8,8 +8,8 @@ class User {
     private $password;
     private $registrationDate;
 
-    public function __construct($userID,$firstName, $lastName, $login, $password) {
-        $this->userID = $userID;
+    public function __construct($userid, $firstName, $lastName, $login, $password) {
+        $this->userID = $userid;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->login = $login;
@@ -66,16 +66,19 @@ class User {
         $connection = $db->getConnection();
         try {
             // Préparation de la requête SQL
-            $stmt = $connection->prepare("INSERT INTO users (userID, firstName, lastName, login, password) VALUES (?, ?, ?, ?, ?)");
-        
+            $stmt = $connection->prepare("INSERT INTO User (firstName, lastName, login, password) VALUES (?, ?, ?, ?)");
+            $stmt->bindParam(1, $this->firstName);
+            $stmt->bindParam(2, $this->lastName);
+            $stmt->bindParam(3, $this->login);
+            $stmt->bindParam(4, $this->password);
             // Exécution de la requête avec des données
-            $stmt->execute([$this->userID, $this->firstName, $this->lastName, $this->login, $this->password]);
+            $res = $stmt->execute();
         
             // Vérification si l'insertion a réussi
-            if ($stmt->rowCount() > 0) {
-                echo "L'utilisateur a été inséré avec succès.";
+            if ($res) {
+                return true;
             } else {
-                echo "L'insertion a échoué.";
+                return false;
             }
         } catch (PDOException $e) {
             // Gestion des erreurs
