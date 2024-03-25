@@ -228,7 +228,7 @@
         <div id="connexion">
             <section >
                 <h3 >Login</h3>
-                <form  method="POST" action="../controller/registerController.php">
+                <form  method="POST" action="../controller/loginController.php">
                     
                     <label for="name">Username :</label> <br>
                     <input type="text" id="username" name="username" placeholder="Insert username here ..." /> <br>

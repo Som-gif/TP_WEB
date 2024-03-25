@@ -95,25 +95,41 @@ class User {
     }
     
     public function selectUser($userID){
-        $stmt = $this->connection->prepare("SELECT * FROM User WHERE userID = :userID");
-        $stmt->bindValue(':userID', $userID, SQLITE3_INTEGER);
-        
-        // Exécution de la requête
-        $result = $stmt->execute();
-        
-        $user = $result->fetchArray(SQLITE3_ASSOC);
-        return $user;
+        $db = Database::getInstance();
+        $connection = $db->getConnection();
+        try{
+            $stmt = $connection->prepare("SELECT * FROM User WHERE userID = :userID");
+            $stmt->bindValue(':userID', $userID, SQLITE3_INTEGER);
+            
+            // Exécution de la requête
+            $result = $stmt->execute();
+            
+            $user = $result->fetchArray(SQLITE3_ASSOC);
+            return $user;
+        } catch (PDOException $e) {
+            // Gestion des erreurs
+            echo "Erreur lors de l'insertion de l'utilisateur : " . $e->getMessage();
+            return false;
+        }
     }
 
     public function selectUserByLogin($login){
-        $stmt = $this->connection->prepare("SELECT * FROM User WHERE Login = :Login");
-        $stmt->bindValue(':Login', $login, SQLITE3_INTEGER);
-        
-        // Exécution de la requête
-        $result = $stmt->execute();
-        
-        $user = $result->fetchArray(SQLITE3_ASSOC);
-        return $user;
+        $db = Database::getInstance();
+        $connection = $db->getConnection();
+        try{
+            $stmt = $connection->prepare("SELECT * FROM User WHERE Login = :Login");
+            $stmt->bindValue(':Login', $login, SQLITE3_INTEGER);
+            
+            // Exécution de la requête
+            $result = $stmt->execute();
+            
+            $user = $result->fetchArray(SQLITE3_ASSOC);
+            return $user;
+        } catch (PDOException $e) {
+            // Gestion des erreurs
+            echo "Erreur lors de l'insertion de l'utilisateur : " . $e->getMessage();
+            return false;
+        }
     }
 
     public function updateUser() {
