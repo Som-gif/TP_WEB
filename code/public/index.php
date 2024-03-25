@@ -30,13 +30,20 @@
                 </article>
 
                 <div>
-                    
+                    <?php if (isset($_SESSION['username'])) { ?>
+                        <h3> Bienvenue <?php echo $_SESSION['username']; 
+                    ?> </h3>
+                    <?php } 
+                    else {
+                    ?>
+
                     <article onclick="showLogin()">
                         <h3>Connect</h3>
                     </article>
                     <article onclick="showSignUp()">
                         <h3 >SignUp</h3>
                     </article>
+                    <?php } ?>
                 </div>
             </nav>
         </header>
@@ -267,4 +274,18 @@
         
     </script>
     </body>
+    <script>
+        var error = <?php echo $_SESSION['error']; ?>;
+
+        if (error == 0) {
+            alert("Les mots de passes ne sont pas identiques");
+        }
+        else if (error == 1) {
+            alert("Mot de passe non conforme");
+        }
+        else if (error == 2) {
+            alert("Erreur lors de l'insertion de l'utilisateur");
+        }
+    </script>
 </html>
+

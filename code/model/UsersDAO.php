@@ -92,6 +92,7 @@ class User {
         } catch (PDOException $e) {
             // Gestion des erreurs
             echo "Erreur lors de l'insertion de l'utilisateur : " . $e->getMessage();
+            return false;
         }
     }
     
