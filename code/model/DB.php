@@ -25,9 +25,9 @@ class Database {
     }
 }
 
-/*
-$db = Database::getInstance();
-$connection = $db->getConnection();
-$db->closeConnection();
-*/
+
+// $db = Database::getInstance();
+// $connection = $db->getConnection();
+// $db->closeConnection();
+
 ?>
