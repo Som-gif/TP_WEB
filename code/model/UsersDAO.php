@@ -111,7 +111,7 @@ class User {
     public function selectUserByLogin($login){
         // Supposons que $pdo est votre objet PDO connecté à la base de données
         $stmt = $this->connection->prepare("SELECT * FROM User WHERE Login = :Login");
-        $stmt->bindValue(':Login', $Login, SQLITE3_INTEGER);
+        $stmt->bindValue(':Login', $login, SQLITE3_INTEGER);
         
         // Exécution de la requête
         $result = $stmt->execute();
@@ -122,7 +122,7 @@ class User {
 
     public function updateUser() {
         // Préparation de la requête SQL pour mettre à jour un utilisateur
-        $stmt = $this->connection->prepare("UPDATE users SET firstName = :firstName, lastName = :lastName, login = :login, password = :password WHERE userID = :userID");
+        $stmt = $this->connection->prepare("UPDATE User SET firstName = :firstName, lastName = :lastName, login = :login, password = :password WHERE userID = :userID");
         $stmt->bindValue(':userID', $this->userID, SQLITE3_INTEGER);
         $stmt->bindValue(':firstName', $this->firstName, SQLITE3_TEXT);
         $stmt->bindValue(':lastName', $this->lastName, SQLITE3_TEXT);
