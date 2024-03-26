@@ -11,10 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $userTemp = new User(null, null, null,$_POST["username"],  $_POST["password"]);
         $user = $userTemp->selectUserByLogin($_POST["username"]);
 
-        if(count($user) > 0){
-            
-            if($user[0]["Password"] == $_POST["password"]){
+        if(gettype($user) == "array" && count($user) > 0){
+            error_log(print_r($user, true));
+            error_log(password_hash($_POST["password"], PASSWORD_BCRYPT));
+            error_log($user['Password']);
+            error_log("TESTTT");
 
+            if($user['Password'] === (password_hash($_POST["password"], PASSWORD_BCRYPT))){
+                error_log("OK MEC");
             }
         }
         $_SESSION['username'] = $_POST["username"];
