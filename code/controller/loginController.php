@@ -27,5 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else {
         header('Location: ../public/index.php?error=3');
     }
+}else{
+    header('Location: ../public/index.php?error=3');
 }
 ?>
