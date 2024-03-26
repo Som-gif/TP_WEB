@@ -73,22 +73,18 @@ class User {
         $db = Database::getInstance();
         $connection = $db->getConnection();
         try {
-            // Préparation de la requête SQL
             $stmt = $connection->prepare("INSERT INTO User (firstName, lastName, login, password) VALUES (?, ?, ?, ?)");
             $stmt->bindParam(1, $this->firstName);
             $stmt->bindParam(2, $this->lastName);
             $stmt->bindParam(3, $this->login);
             $stmt->bindParam(4, password_hash($this->password, PASSWORD_BCRYPT));
-            // Exécution de la requête avec des données
             $res = $stmt->execute();
-            // Vérification si l'insertion a réussi
             if ($res) {
                 return true;
             } else {
                 return false;
             }
         } catch (PDOException $e) {
-            // Gestion des erreurs
             echo "Erreur lors de l'insertion de l'utilisateur : " . $e->getMessage();
             return false;
         }
@@ -124,8 +120,6 @@ class User {
             $result = $stmt->execute();
             
             $user = $result->fetchArray(SQLITE3_ASSOC);
-            error_log("rrzrzzrrzzr");
-            error_log(print_r($user, true));
             return $user;
 
 

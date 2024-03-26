@@ -11,7 +11,6 @@ function checkPassword($password) {
     $symbol = preg_match('@[^\w]@', $password);
     
     if(!$uppercase || !$lowercase || !$number || strlen($password) < 8 || !$symbol) {
-        $_SESSION['error'] = 1; 
         return false;
     }
     return true;
@@ -29,11 +28,14 @@ function register() {
     $passwordSignup = $_POST['passwordSignup'];
     $verifPassword = $_POST['verifPassword'];
 
+    if ($usernameSignup == '' || $nom == '' || $prenom == '' || $passwordSignup == '' || $verifPassword == '') {
+        header('Location: ../public/index.php?error=3');
+    }
     if ($passwordSignup != $verifPassword) {
-        $_SESSION['error'] = 0; 
+        header('Location: ../public/index.php?error=0');
     }
     else if (!checkPassword($passwordSignup)) {
-        return;
+        header('Location: ../public/index.php?error=1');
     }
     else {
         $user = new User(null, $prenom, $nom, $usernameSignup, $passwordSignup);
@@ -42,7 +44,7 @@ function register() {
             $_SESSION['username'] = $usernameSignup; 
         }
         else {
-            $_SESSION['error'] = 2; 
+            header('Location: ../public/index.php?error=2');
         }
     }
 }

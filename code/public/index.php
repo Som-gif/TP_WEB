@@ -278,16 +278,28 @@
     </script>
     </body>
     <script>
-        var error = <?php echo $_SESSION['error']; if (isset($_SESSION['error'])) { unset($_SESSION['error']); } else { echo -1; } ?>;
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        var error = urlParams.get('error');
+
         if (error == 0) {
             alert("Les mots de passes ne sont pas identiques");
+            window.location.href = "../public/index.php";
         }
         else if (error == 1) {
             alert("Mot de passe non conforme");
+            window.location.href = "../public/index.php";
         }
         else if (error == 2) {
             alert("Erreur lors de l'insertion de l'utilisateur");
+            window.location.href = "../public/index.php";
         }
+        else if (error == 3) {
+            alert("Identifiant ou mot de passe incorrecte");
+            window.location.href = "../public/index.php";
+        }
+        
+
     </script>
 </html>
 
