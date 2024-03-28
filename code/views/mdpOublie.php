@@ -5,7 +5,6 @@
         <title>Page de présentation</title>
         <link rel="stylesheet" href="../public/css/style.css">
         <script src="../public/js/script.js" ></script>
-        <script src="../public/js/quiz.js"></script>
     </head>
     <body>
         <header>
@@ -22,7 +21,7 @@
                     
                 </article>
                 <article>
-                    <a href="./contact.php"><h3>Contact Us </h3></a>
+                    <h3>Contact Us </h3>
                     
                 </article>
                 <article onclick="showLogin()">
@@ -32,26 +31,33 @@
                     <h3  >SignUp</h3>
                 </article>
                 <article>
-                    <a href="./quiz.php"><h3> Quiz</h3></a>
+                    <a href="../views/quiz.php"> <h3>Quiz</h3></a>
                 </article>
             </nav>
         </header>
-        <nav id="topNav">
-            <section>
-                <h3>Home</h3>
-                <h1>My Service</h1>
-                <h3>Ecrivez ce que vous voulez</h3>
-            </section>
-        </nav>
-        <main>
-            <section id="quizzSection"  >
-                <div id="quiz"></div>
-                <button id="submit">Valider</button>
-                
-            </section>
-        </main>
+        <div style="padding: 20px;">
+            <h1>Mot de passe oublié</h1>
 
+            <form method="POST" action="../controller/forgotController.php">
+                <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" required/> <br>
+                <input class="button" type="submit" value="Envoyer">
+            </form>
+        </div>
 
+        <style>
+            .button {
+                background-color: #242031;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+            </style>    
         <!-- Formulaire de connexion -->
         <div id="connexion">
             <section >
@@ -64,7 +70,7 @@
                     <label for="password">Password :</label> <br>
                     <input type="password" id="password" name="password" placeholder="Insert password here" /> <br>
 
-                    <a href="../views/mdpOublie.php"">Mot de passe oublié</a> <br>
+                    <a href="#">Mot de passe oublié</a> <br>
 
                     <input type="submit" value="Log in">
                 </form>

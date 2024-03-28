@@ -81,7 +81,7 @@
                     <label for="password">Password :</label> <br>
                     <input type="password" id="password" name="password" placeholder="Insert password here" /> <br>
 
-                    <a href="#">Mot de passe oublié</a> <br>
+                    <a href="../views/mdpOublie.php">Mot de passe oublié</a> <br>
 
                     <input type="submit" value="Log in">
                 </form>

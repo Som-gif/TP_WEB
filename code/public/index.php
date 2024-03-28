@@ -1,9 +1,6 @@
 
 <!DOCTYPE html>
 <!-- Hugo Le Noë TD 3 firefox -->
-<?php
-    session_start();
-?>  
 <html>
     <head>
         <title>Page de présentation</title>
@@ -236,7 +233,7 @@
                     <label for="password">Password :</label> <br>
                     <input type="password" id="password" name="password" placeholder="Insert password here" /> <br>
 
-                    <a href="#">Mot de passe oublié</a> <br>
+                    <a href="../views/mdpOublie.php">Mot de passe oublié</a> <br>
 
                     <input type="submit" value="Log in">
                 </form>
@@ -303,3 +300,6 @@
     </script>
 </html>
 
+<?php
+    session_start();
+?>  

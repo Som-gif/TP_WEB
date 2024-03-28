@@ -329,6 +329,15 @@ ul{
 }
 
 
+input {
+    border: none;
+    border-bottom: #3c384681 thin solid;
+    width: 20vw;
+    font-size: 18px;
+}
+
+
+
 #connexion input, #creationCompte input{
     background-color: #faebd6;
     border: none;
@@ -336,6 +345,8 @@ ul{
     width: 20vw;
     font-size: 18px;
 }
+
+
 
 #connexion input[type="submit"], #creationCompte input[type="submit"]{
     background-color: #faebd6;
