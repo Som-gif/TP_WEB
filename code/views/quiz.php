@@ -5,6 +5,7 @@
         <title>Page de présentation</title>
         <link rel="stylesheet" href="../public/css/style.css">
         <script src="../public/js/script.js" ></script>
+        <script src="../public/js/quiz.js"></script>
     </head>
     <body>
         <header>
@@ -43,7 +44,10 @@
             </section>
         </nav>
         <main>
-            <section id="contactUs" >
+            <section id="quizzSection"  >
+                <div id="quiz"></div>
+                <button id="submit">Valider</button>
+                
             </section>
         </main>
 
