@@ -19,10 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $userTemp = new User(null, null, null,$_POST["username"],  null, null);
 
         $user = $userTemp->selectUserByLogin($_POST["username"]);
-        $userTemp->setFirstName($user->FirstName);
-        $userTemp->setLastName($user->LastName);
-        $userTemp->setUserID($user->UserID);
-        $userTemp->setEmail($user->Email);
+        $userTemp->setFirstName($user['FirstName']);
+        $userTemp->setLastName($user['LastName']);
+        $userTemp->setUserID($user['UserID']);
+        $userTemp->setEmail($user['email']);
 
         if ($user != null) {
             $password = $userTemp->genNewPassword();
@@ -38,7 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Port       = 587;                                  
 
             $mail->setFrom('hamza.marghich.trash@gmail.com', 'TP_WEB');
-            $mail->addAddress('hamza.marghich@gmail.com', 'Hamza'); 
+            error_log($userTemp->getEmail());
+            error_log(print_r($userTemp, true));
+            $mail->addAddress($userTemp->getEmail(), 'Hamza'); 
 
 
             $mail->isHTML(true);
