@@ -1,6 +1,9 @@
 
 <!DOCTYPE html>
 <!-- Hugo Le Noë TD 3 firefox -->
+<?php
+    session_start();
+?>  
 <html>
     <head>
         <title>Page de présentation</title>
@@ -249,11 +252,14 @@
                     <label for="name">Nom :</label> <br>
                     <input type="text" id="nom" name="nom" placeholder="Insert Name here ..." /> <br>
 
-                    <label for="name">Prenom :</label> <br>
+                    <label for="name">Prénom :</label> <br>
                     <input type="text" id="prenom" name="prenom" placeholder="Insert prénom here ..." /> <br>
                     
-                    <label for="name">Username :</label> <br>
-                    <input type="text" id="usernameSignup" name="usernameSignup" placeholder="Insert username here ..." /> <br>
+                    <label for="name">Nom d'utilisateur :</label> <br>
+                    <input type="text" id="usernameSignup" name="usernameSignup" placeholder="Nom d'utilisateur ..." /> <br>
+
+                    <label for="email">Email :</label> <br>
+                    <input type="email" id="email" name="email" placeholder="Insert email here" /> <br>
                     
                     <label for="password"  >Password :</label> <br>
                     <input type="password" id="passwordSignup"  name="passwordSignup" placeholder="Insert password here" /> <br>
@@ -300,6 +306,3 @@
     </script>
 </html>
 
-<?php
-    session_start();
-?>  

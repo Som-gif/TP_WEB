@@ -8,7 +8,7 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] != '' && $_POST["password"] != ''){
-        $userTemp = new User(null, null, null,$_POST["username"],  $_POST["password"]);
+        $userTemp = new User(null, null, null,$_POST["username"],  $_POST["password"], null);
         $user = $userTemp->selectUserByLogin($_POST["username"]);
 
         if(gettype($user) == "array" && count($user) > 0){

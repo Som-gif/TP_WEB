@@ -25,10 +25,11 @@ function register() {
     $usernameSignup = $_POST['usernameSignup'];
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
+    $email = $_POST['email'];
     $passwordSignup = $_POST['passwordSignup'];
     $verifPassword = $_POST['verifPassword'];
 
-    if ($usernameSignup == '' || $nom == '' || $prenom == '' || $passwordSignup == '' || $verifPassword == '') {
+    if ($usernameSignup == '' || $nom == '' || $prenom == '' || $passwordSignup == '' || $verifPassword == '' || $email == '') {
         header('Location: ../public/index.php?error=3');
     }
     if ($passwordSignup != $verifPassword) {
@@ -38,7 +39,7 @@ function register() {
         header('Location: ../public/index.php?error=1');
     }
     else {
-        $user = new User(null, $prenom, $nom, $usernameSignup, $passwordSignup);
+        $user = new User(null, $prenom, $nom, $usernameSignup, $passwordSignup, $email);
         
         if ($user->addUser()) {
             $_SESSION['username'] = $usernameSignup; 
